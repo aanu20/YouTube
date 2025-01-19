@@ -1,6 +1,6 @@
-
+import TopBar from "./TopBarFolder/TopBar";
 function App() {
-  return <h1>hi all</h1>
+  return <div><TopBar /></div>;
 }
 
 export default App;
