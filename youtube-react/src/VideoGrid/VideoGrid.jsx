@@ -1,9 +1,7 @@
 
 import SelectedVideoGrid from "./SelectedVideoGrid";
+import './VideoGrid.css'
 function VideoGrid(){
-
-    
-    
     const videos=
     [{  title:"React Full Course for free ⚛️ (2024)",
         channel:"Bro Code",
@@ -46,27 +44,67 @@ function VideoGrid(){
     
     ];
    
-    
+    const Shorts=[
+        {
+            ShortsURL:"https://youtube.com/embed/Po4FCqAwIKU",
+            id:1,
+            title:"How Brain Rot Destroys student's life",
+            views:"2.3M views",
+        },{
+            ShortsURL:"https://youtube.com/embed/Jayb9gf62kU",
+            id:2,
+            title:"Who are YOU",
+            views:"21M views",
+        },
+        {
+            ShortsURL:"https://youtube.com/embed/vZ_PdnlZ36E",
+            id:3,
+            title:"The Crown vs Real ",
+            views:"11M views",
+        },
+        {
+            ShortsURL:"https://youtube.com/embed/w6pP8QO8Nk0",
+            id:4,
+            title:"Garlic bread / Sarımsaklı Ekmek",
+            views:"15M views",
+        },
+        
+        
+    ];
+
     return(
          <>
-        <div className="container">
-                           
-            {
-                videos.map((video)=>{
-                    return(<div>
-                        
-                            <iframe id="player"  width="640" height="350"
-                            src={video.video}
-                            key={video.id}
-                            frameborder="0"></iframe>
-                            <h2>{video.title}</h2>
-                            <h4>{video.channel}</h4>
-                            <h4>{video.views}</h4>
-                    </div>
-                )})
-            }
+            <div className="container">{
+                    videos.map((video)=>{
+                        return(<div>
             
-        </div>
+                            <iframe className="frameVideo" id="player"  width="350" height="250" src={`${video.video}?modestbranding=1&rel=0`}
+                            frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen></iframe>
+                            <h3 className="videotitle">{video.title}</h3>
+                            <div className="describeVideo">
+                                <p>{video.channel}</p>
+                                <p>{video.views}</p>
+                            </div>
+                        </div>
+                    )})}
+            </div>
+            
+            <div className="shortsContainer">
+                    {
+                        Shorts.map((shorts)=>{
+                            return(<div>
+                                <iframe  className="frameShorts" width="250" height="350" src={shorts.ShortsURL}
+                                key={shorts.id}
+                                frameborder="0"></iframe>
+                                <h3 className="Shorttitle">{shorts.title}</h3>
+                                <div className="describeShorts">
+                                    <p>{shorts.views}</p>
+                                </div>
+                            </div>)})
+                    }
+            </div>
+
 {/*         
     <SelectedVideoGrid videos={videos} /> */}
     </>   

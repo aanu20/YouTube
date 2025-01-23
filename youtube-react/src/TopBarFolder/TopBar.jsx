@@ -16,12 +16,25 @@ function TopBar(){
             <img id="login-icon" src={loginbar}></img>
         </div>
 
-        <div>
-            <button>All</button>
-            <button>Music</button>
-            <button>courses</button>
-            <button>podcasts</button>
-            <button>Tamil Cinema</button>
+        <div className="right">
+            <div className="buttons">
+                <button className="button">All</button>
+                <button className="button">Music</button>
+                <button className="button">courses</button>
+                <button className="button">podcasts</button>
+                <button className="button">Software Engineering</button>
+                <button className="button">T-series</button>
+                <button className="button">Web series</button>
+                <button className="button">Tamil Cinema</button>
+            </div>
+        </div>
+        <div className="left">
+                <div className="left-bar">
+                    <p>hi</p>
+                    <div className="home">
+                        <img src={home}>Home</img>
+                    </div>
+                </div> 
         </div>
     </>
     )
