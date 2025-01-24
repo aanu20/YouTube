@@ -1,5 +1,6 @@
 
 import SelectedVideoGrid from "./SelectedVideoGrid";
+import {home,thumb,playlist,watchlater,download,histroy} from "./images"
 import './VideoGrid.css'
 function VideoGrid(){
     const videos=
@@ -71,39 +72,79 @@ function VideoGrid(){
         
         
     ];
+    function homeClicked(){
+        console.log("home")
+    }
 
     return(
          <>
-            <div className="container">{
-                    videos.map((video)=>{
-                        return(<div>
-            
-                            <iframe className="frameVideo" id="player"  width="350" height="250" src={`${video.video}?modestbranding=1&rel=0`}
-                            frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                            allowfullscreen></iframe>
-                            <h3 className="videotitle">{video.title}</h3>
-                            <div className="describeVideo">
-                                <p>{video.channel}</p>
-                                <p>{video.views}</p>
-                            </div>
-                        </div>
-                    )})}
-            </div>
-            
-            <div className="shortsContainer">
-                    {
-                        Shorts.map((shorts)=>{
-                            return(<div>
-                                <iframe  className="frameShorts" width="250" height="350" src={shorts.ShortsURL}
-                                key={shorts.id}
-                                frameborder="0"></iframe>
-                                <h3 className="Shorttitle">{shorts.title}</h3>
-                                <div className="describeShorts">
-                                    <p>{shorts.views}</p>
+            <div  className="total-grid">
+                <div className="right">
+                    <div className="container">{
+                            videos.map((video)=>{
+                                return(<div>
+                
+                                    <iframe className="frameVideo" id="player"  width="350" height="250" src={`${video.video}?modestbranding=1&rel=0`}
+                                    frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                    allowfullscreen></iframe>
+                                    <h3 className="videotitle">{video.title}</h3>
+                                    <div className="describeVideo">
+                                        <p>{video.channel}</p>
+                                        <p>{video.views}</p>
+                                    </div>
                                 </div>
-                            </div>)})
-                    }
+                            )})}
+                    </div>
+                
+                    <div className="shortsContainer">
+                            {
+                                Shorts.map((shorts)=>{
+                                    return(<div>
+                                        <iframe  className="frameShorts" width="250" height="350" src={shorts.ShortsURL}
+                                        key={shorts.id}
+                                        frameborder="0"></iframe>
+                                        <h3 className="Shorttitle">{shorts.title}</h3>
+                                        <p className="describeShorts">{shorts.views}</p>
+                                        </div>)})
+                            }
+                    </div>
+                </div>
+
+                <div className="left">
+                    <div className="left-bar">
+                    
+                        <div className='side-1'>
+                            <button className="home-button" onClick={()=>{
+                                homeClicked()
+                            }}>
+                                <img className="home" src={home}></img>Home
+                            </button>
+                            <button style={{ marginLeft: "25px" }} className="shorts-button">Shorts</button>
+                            <button style={{ marginLeft: "25px" }}className="subs-button">Subscriptions</button>
+                        </div>
+                        <div className="side-2">
+                            <button className="like-button">
+                                <img className="like" src={thumb}></img>Likes
+                            </button>
+
+                            <button  className="play-list-button">
+                                <img className="playlist" src={playlist}></img>Playlist
+                            </button>
+
+                            <button  className="watchlater-button">
+                                <img className="watchlater" src={watchlater}></img>Playlist
+                            </button>
+                            <button  className="history-button">
+                                <img className="history" src={histroy}></img>History
+                            </button>
+                            <button  className="download-button">
+                                <img className="download" src={download}></img>Download
+                            </button>
+                        </div>
+                        
+                    </div> 
             </div>
+        </div>
 
 {/*         
     <SelectedVideoGrid videos={videos} /> */}
