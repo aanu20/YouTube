@@ -1,8 +1,13 @@
 
-import SelectedVideoGrid from "./SelectedVideoGrid";
 import {home,thumb,playlist,watchlater,download,histroy} from "./images"
 import './VideoGrid.css'
-function VideoGrid(){
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+function HomePage() {
+
+    const [selectedVideo, setSelectedVideo] = useState(null); // Store selected video
+    const navigate = useNavigate();
+
     const videos=
     [{  title:"React Full Course for free ⚛️ (2024)",
         channel:"Bro Code",
@@ -72,12 +77,24 @@ function VideoGrid(){
         
         
     ];
-    function homeClicked(){
-        console.log("home")
-    }
+    const handleVideoClick = (video) => {
+        console.log(video)
+        setSelectedVideo(video); // Update state with the clicked video
+        navigate(`/selected-video`, { state: { video } }); // Navigate to SelectedVideoGrid
+      };
 
-    return(
-         <>
+    return (
+        <>
+            <div className="buttons">
+                <button className="button">All</button>
+                <button className="button">Music</button>
+                <button className="button">courses</button>
+                <button className="button">podcasts</button>
+                <button className="button">Software Engineering</button>
+                <button className="button">T-series</button>
+                <button className="button">Web series</button>
+                <button className="button">Tamil Cinema</button>
+            </div>
             <div  className="total-grid">
                 <div className="right">
                     <div className="container">{
@@ -87,7 +104,9 @@ function VideoGrid(){
                                     <iframe className="frameVideo" id="player"  width="350" height="250" src={`${video.video}?modestbranding=1&rel=0`}
                                     frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                     allowfullscreen></iframe>
-                                    <h3 className="videotitle">{video.title}</h3>
+                                      <a href="#" className="videotitle" onClick={() => handleVideoClick(video)}>
+                                        {video.title}
+                                    </a>
                                     <div className="describeVideo">
                                         <p>{video.channel}</p>
                                         <p>{video.views}</p>
@@ -114,9 +133,7 @@ function VideoGrid(){
                     <div className="left-bar">
                     
                         <div className='side-1'>
-                            <button className="home-button" onClick={()=>{
-                                homeClicked()
-                            }}>
+                            <button className="home-button" >
                                 <img className="home" src={home}></img>Home
                             </button>
                             <button style={{ marginLeft: "25px" }} className="shorts-button">Shorts</button>
@@ -146,9 +163,8 @@ function VideoGrid(){
             </div>
         </div>
 
-{/*         
-    <SelectedVideoGrid videos={videos} /> */}
-    </>   
-    )
+        </>
+    );
 }
-export default VideoGrid;
+
+export default HomePage;

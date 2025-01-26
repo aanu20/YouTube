@@ -16,16 +16,6 @@ function TopBar(){
                 <button id="create-button">Create</button>
                 <img id="login-icon" src={loginbar}></img>
             </div>
-            <div className="buttons">
-                <button className="button">All</button>
-                <button className="button">Music</button>
-                <button className="button">courses</button>
-                <button className="button">podcasts</button>
-                <button className="button">Software Engineering</button>
-                <button className="button">T-series</button>
-                <button className="button">Web series</button>
-                <button className="button">Tamil Cinema</button>
-            </div>
         </div>
         
     </>
