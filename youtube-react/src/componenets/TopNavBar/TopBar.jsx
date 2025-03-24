@@ -1,24 +1,39 @@
-//import youtubeLogo from "./images/youtube-fill.png";
-//import sidebar from "./images/side-bar-fill.png";
-//it is multiple steps so include index.js in image and export all the images
-import { youtubeLogo,sidebar,mic,loginbar} from "./images"
-import "./TopBar.css"
-function TopBar(){
+import React from "react";
+import { useNavigate } from "react-router-dom"; // For navigation
+import { youtubeLogo, sidebar, mic, loginbar } from "./images";
+import "./TopBar.css";
+
+function TopBar() {
+    const navigate = useNavigate(); // Hook to navigate to another page
+
+    const handleKeyPress = (event) => {
+        if (event.key === "Enter") {
+            const searchValue = event.target.value; // Get the value of the search bar
+            navigate(`/search?query=${encodeURIComponent(searchValue)}`); // Navigate with query param
+        }
+    };
+
     return (
-    <>  
-        <div className="top-bar">
-            <div className="Top">
-                <img id= "side-bar-icon" src={sidebar}></img>
-                <img id="youtube-logo" src={youtubeLogo}></img>
-                <span id="youtube-text">YouTube</span>
-                <input id="search-bar" type="text" placeholder="search" name="search-name" ></input>
-                <img id="mic-icon" src={mic}></img>
-                <button id="create-button">Create</button>
-                <img id="login-icon" src={loginbar}></img>
+        <>
+            <div className="top-bar">
+                <div className="Top">
+                    <img id="side-bar-icon" src={sidebar} alt="Sidebar Icon" />
+                    <img id="youtube-logo" src={youtubeLogo} alt="YouTube Logo" />
+                    <span id="youtube-text">YouTube</span>
+                    <input
+                        id="search-bar"
+                        type="text"
+                        placeholder="Search"
+                        name="search-name"
+                        onKeyDown={handleKeyPress} // Add the keydown event
+                    />
+                    <img id="mic-icon" src={mic} alt="Microphone Icon" />
+                    <button id="create-button">Create</button>
+                    <img id="login-icon" src={loginbar} alt="Login Icon" />
+                </div>
             </div>
-        </div>
-        
-    </>
-    )
+        </>
+    );
 }
-export default TopBar
+
+export default TopBar;
