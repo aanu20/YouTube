@@ -1,11 +1,11 @@
-
 import HomePage from './componenets/Homepage/HomePage';
-import TopBar from './componenets/TopNavBar/TopBar'
+import TopBar from './componenets/TopNavBar/TopBar';
 import SelectedVideoGrid from './componenets/DisplayVideoPage/SelectedVideoGrid';
-import { BrowserRouter,Routes,Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import SearchResults from './componenets/SearchVideoList/SearchResults';
 import React from "react";
 import HistoryPage from './componenets/History/HistoryPage';
+import CommentSection from './componenets/DisplayVideoPage/CommentSection';
 
 function App() {
   const videos = [
@@ -25,31 +25,38 @@ function App() {
   ];
 
   const searchvideolist = [
-    { language: "java",
+    { 
+      language: "java",
       videos: [
-        {id:10,video: "https://www.youtube.com/embed/grEKMHGYyns",channel: "Programming with Mosh",views: "11M 5 Months ago",title: "Java Full Course for Beginners",},
-        { id:11,video: "https://www.youtube.com/embed/MzufWzltr3g",channel: "Curious Freaks",views: "215k 2 Years ago",title: "Master Java in 30 Days🔥How to become JAVA DEVELOPER in 30DAYS - The Fast Track to Learning Java🛑😳", },
+        {id: 10, video: "https://www.youtube.com/embed/grEKMHGYyns", channel: "Programming with Mosh", views: "11M 5 Months ago", title: "Java Full Course for Beginners"},
+        {id: 11, video: "https://www.youtube.com/embed/MzufWzltr3g", channel: "Curious Freaks", views: "215k 2 Years ago", title: "Master Java in 30 Days"},
       ],
     },
-    {language: "python",
+    {
+      language: "python",
       videos: [
-        { id:12,video: "https://www.youtube.com/embed/ix9cRaBkVe0",channel: "Bro code",views: "1M 5 Months ago",title: "Python Full Course for Beginners",},
-        { id:13,video: "https://www.youtube.com/embed/x7X9w_GIm1s",channel: "Programming with Mosh",views: "2.7M 2 Years ago",title: "Python in 100 seconds",},
-        {   id:14,video: "https://www.youtube.com/embed/UrsmFxEIp5k",channel: "Code with Harry",views: "5.4M 7 Months ago",title: "Python Tutorial For Beginners in Hindi | Complete Python Course 🔥",},
-        { id:15,video: "https://www.youtube.com/embed/mRMmlo_Uqcs",channel: "NetworkChunk",views: "2.3M 5 Years ago",title: "you need to learn Python RIGHT NOW!! // EP 1",},
+        {id: 12, video: "https://www.youtube.com/embed/ix9cRaBkVe0", channel: "Bro code", views: "1M 5 Months ago", title: "Python Full Course for Beginners"},
+        {id: 13, video: "https://www.youtube.com/embed/x7X9w_GIm1s", channel: "Programming with Mosh", views: "2.7M 2 Years ago", title: "Python in 100 seconds"},
+        {id: 14, video: "https://www.youtube.com/embed/UrsmFxEIp5k", channel: "Code with Harry", views: "5.4M 7 Months ago", title: "Python Tutorial For Beginners in Hindi"},
+        {id: 15, video: "https://www.youtube.com/embed/mRMmlo_Uqcs", channel: "NetworkChunk", views: "2.3M 5 Years ago", title: "you need to learn Python RIGHT NOW!!"},
       ],
     },
   ];
-  
 
   return (
     <BrowserRouter>
       <TopBar />
       <Routes>
         <Route path="/" element={<HomePage videos={videos} Shorts={Shorts} />} />
-        <Route path="/selected-video/:videoid" element={<SelectedVideoGrid videos={videos} Shorts={Shorts} searchvideolist={searchvideolist} />} />
-        <Route path="/search" element={<SearchResults  searchvideolist={searchvideolist}/>}/>
-        <Route path="/history" element={<HistoryPage />}></Route>
+        <Route path="/selected-video/:videoid" element={
+          <SelectedVideoGrid 
+            videos={videos} 
+            searchvideolist={searchvideolist} 
+          />
+        } />
+        <Route path="/selected-video/:videoid/comments" element={<CommentSection />} />
+        <Route path="/search" element={<SearchResults searchvideolist={searchvideolist} />} />
+        <Route path="/history" element={<HistoryPage />} />
       </Routes>
     </BrowserRouter>
   );
