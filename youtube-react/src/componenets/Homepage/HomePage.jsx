@@ -1,7 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import "./VideoGrid.css";
-import {home,thumb,playlist,watchlater,download,histroy} from "./images"
 
 function HomePage({ videos, Shorts }) {
   const navigate = useNavigate();
@@ -65,38 +64,7 @@ function HomePage({ videos, Shorts }) {
             ))}
           </div>
         </div>
-        <div className="left">
-        <div className="left-bar">
         
-            <div className='side-1'>
-                <button className="home-button" >
-                    <img className="home" src={home}></img>Home
-                </button>
-                <button style={{ marginLeft: "25px" }} className="shorts-button">Shorts</button>
-                <button style={{ marginLeft: "25px" }}className="subs-button">Subscriptions</button>
-            </div>
-            <div className="side-2">
-                <button className="like-button">
-                    <img className="like" src={thumb}></img>Likes
-                </button>
-
-                <button  className="play-list-button">
-                    <img className="playlist" src={playlist}></img>Playlist
-                </button>
-
-                <button  className="watchlater-button">
-                    <img className="watchlater" src={watchlater}></img>Playlist
-                </button>
-                <button  className="history-button">
-                    <img className="history" src={histroy}></img>History
-                </button>
-                <button  className="download-button">
-                    <img className="download" src={download}></img>Download
-                </button>
-            </div>
-            
-        </div> 
-</div>
       </div>
     </>
   );

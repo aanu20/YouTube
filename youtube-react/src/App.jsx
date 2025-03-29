@@ -5,7 +5,7 @@ import SelectedVideoGrid from './componenets/DisplayVideoPage/SelectedVideoGrid'
 import { BrowserRouter,Routes,Route } from 'react-router-dom';
 import SearchResults from './componenets/SearchVideoList/SearchResults';
 import React from "react";
-
+import HistoryPage from './componenets/History/HistoryPage';
 
 function App() {
   const videos = [
@@ -27,7 +27,7 @@ function App() {
   const searchvideolist = [
     { language: "java",
       videos: [
-        {id:10,video: "https://www.youtube.com/embed/eIrMbAQSU34",channel: "Programming with Mosh",views: "11M 5 Months ago",title: "Java Full Course for Beginners",},
+        {id:10,video: "https://www.youtube.com/embed/grEKMHGYyns",channel: "Programming with Mosh",views: "11M 5 Months ago",title: "Java Full Course for Beginners",},
         { id:11,video: "https://www.youtube.com/embed/MzufWzltr3g",channel: "Curious Freaks",views: "215k 2 Years ago",title: "Master Java in 30 Days🔥How to become JAVA DEVELOPER in 30DAYS - The Fast Track to Learning Java🛑😳", },
       ],
     },
@@ -49,6 +49,7 @@ function App() {
         <Route path="/" element={<HomePage videos={videos} Shorts={Shorts} />} />
         <Route path="/selected-video/:videoid" element={<SelectedVideoGrid videos={videos} Shorts={Shorts} searchvideolist={searchvideolist} />} />
         <Route path="/search" element={<SearchResults  searchvideolist={searchvideolist}/>}/>
+        <Route path="/history" element={<HistoryPage />}></Route>
       </Routes>
     </BrowserRouter>
   );
