@@ -12,6 +12,9 @@ function TopBar() {
     const Showshorts=()=>{
         navigate("/shorts")
     }
+    const Gohome=()=>{
+        navigate("/")
+    }
     const handleKeyPress = (event) => {
         if (event.key === "Enter") {
             const searchValue = event.target.value; // Get the value of the search bar
@@ -43,8 +46,8 @@ function TopBar() {
                     <div className="left-bar">
                     
                         <div className='side-1'>
-                            <button className="home-button" >
-                                <img className="home" src={home}></img>Home
+                            <button onClick={Gohome} className="home-button" >
+                                <img className="home"  src={home}></img>Home
                             </button>
                             <button style={{ marginLeft: "25px" }} onClick={Showshorts} className="shorts-button">Shorts</button>
                             <button style={{ marginLeft: "25px" }}className="subs-button">Subscriptions</button>
