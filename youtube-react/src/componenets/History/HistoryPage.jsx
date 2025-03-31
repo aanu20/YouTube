@@ -1,11 +1,11 @@
 import React from "react";
 import './HistoryPage.css'
 function HistoryPage(){
-    return(<>
+    return(
     <div className="histStyle">
-        <h1>watch histroy</h1>
+        <h1>watch history</h1>
     </div>
     
-    </>)
+    )
 }
 export default HistoryPage;

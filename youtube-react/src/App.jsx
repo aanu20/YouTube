@@ -6,7 +6,7 @@ import SearchResults from './componenets/SearchVideoList/SearchResults';
 import React from "react";
 import HistoryPage from './componenets/History/HistoryPage';
 import CommentSection from './componenets/DisplayVideoPage/CommentSection';
-
+import ShortsPage from './componenets/DisplayVideoPage/ShortsPage';
 function App() {
   const videos = [
     { title: "React Full Course for free ⚛️ (2024)", channel: "Bro Code", views: "1.5M views 1 year ago", id: 1, video: "https://www.youtube.com/embed/CgkZ7MvWUAA" },
@@ -48,15 +48,11 @@ function App() {
       <TopBar />
       <Routes>
         <Route path="/" element={<HomePage videos={videos} Shorts={Shorts} />} />
-        <Route path="/selected-video/:videoid" element={
-          <SelectedVideoGrid 
-            videos={videos} 
-            searchvideolist={searchvideolist} 
-          />
-        } />
+        <Route path="/selected-video/:videoid" element={ <SelectedVideoGrid videos={videos} searchvideolist={searchvideolist}  /> } />
         <Route path="/selected-video/:videoid/comments" element={<CommentSection />} />
         <Route path="/search" element={<SearchResults searchvideolist={searchvideolist} />} />
         <Route path="/history" element={<HistoryPage />} />
+        <Route path="/shorts" element={<ShortsPage Shorts={Shorts} />} />
       </Routes>
     </BrowserRouter>
   );

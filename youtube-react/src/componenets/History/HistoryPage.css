@@ -1,3 +1,12 @@
-.histStyle{
-    margin-top: 90px;
+.histStyle {
+    margin-left: 240px; /* Match the width of your sidebar */
+    padding: 20px;
+    min-height: 100vh;
+    background-color: #f9f9f9;
+}
+
+.histStyle h1 {
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 20px;
 }
